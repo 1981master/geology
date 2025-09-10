@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['card', cardBorderClass, 'mb-3']"
-    style="max-width: 100%"
-  >
+  <div :class="['card', cardBorderClass, 'mb-3']" style="max-width: 100%">
     <div
       v-if="showHeader && headerText"
       :class="['card-header', headerBgClass, headerBorderClass]"
@@ -27,49 +24,49 @@
 
 <script>
 export default {
-  name: 'cardComponent',
+  name: "cardComponent",
   props: {
-    border: { type: String, default: 'success' },
-    headerBorder: { type: String, default: 'success' },
-    footerBorder: { type: String, default: 'success' },
-    textColor: { type: String, default: 'success' },
-    headerBg: { type: String, default: 'transparent' },
-    footerBg: { type: String, default: 'transparent' },
+    border: { type: String, default: "success" },
+    headerBorder: { type: String, default: "success" },
+    footerBorder: { type: String, default: "success" },
+    textColor: { type: String, default: "success" },
+    headerBg: { type: String, default: "transparent" },
+    footerBg: { type: String, default: "transparent" },
     showHeader: { type: Boolean, default: true },
     showFooter: { type: Boolean, default: true },
     headerText: { type: String, default: null },
   },
   computed: {
     cardBorderClass() {
-      return this.border && this.border !== 'none'
+      return this.border && this.border !== "none"
         ? `border-${this.border}`
-        : ''
+        : "";
     },
     headerBorderClass() {
-      return this.headerBorder && this.headerBorder !== 'none'
+      return this.headerBorder && this.headerBorder !== "none"
         ? `border-${this.headerBorder}`
-        : ''
+        : "";
     },
     footerBorderClass() {
-      return this.footerBorder && this.footerBorder !== 'none'
+      return this.footerBorder && this.footerBorder !== "none"
         ? `border-${this.footerBorder}`
-        : ''
+        : "";
     },
     textClass() {
-      return this.textColor ? `text-${this.textColor}` : ''
+      return this.textColor ? `text-${this.textColor}` : "";
     },
     headerBgClass() {
-      return this.headerBg && this.headerBg !== 'none'
+      return this.headerBg && this.headerBg !== "none"
         ? `bg-${this.headerBg}`
-        : ''
+        : "";
     },
     footerBgClass() {
-      return this.footerBg && this.footerBg !== 'none'
+      return this.footerBg && this.footerBg !== "none"
         ? `bg-${this.footerBg}`
-        : ''
+        : "";
     },
   },
-}
+};
 </script>
 
 <style scoped>

@@ -1,9 +1,6 @@
 <template>
   <div :class="['tabsComponent', sizeClass, borderClass, colorClass]">
-    <ul
-      class="nav nav-tabs"
-      role="tablist"
-    >
+    <ul class="nav nav-tabs" role="tablist">
       <li
         v-for="(tab, index) in tabs"
         :key="tab.key || index"
@@ -41,7 +38,7 @@
       >
         <slot :name="'pane-' + index">
           <!-- default fallback content -->
-          <p>{{ tab.content || 'No content provided.' }}</p>
+          <p>{{ tab.content || "No content provided." }}</p>
         </slot>
       </div>
     </div>
@@ -50,7 +47,7 @@
 
 <script>
 export default {
-  name: 'TabsComponent',
+  name: "TabsComponent",
   props: {
     tabs: {
       type: Array,
@@ -70,45 +67,46 @@ export default {
     },
     size: {
       type: String,
-      default: '', // '', 'sm', 'lg'
-      validator: (v) => ['', 'sm', 'lg'].includes(v),
+      default: "", // '', 'sm', 'lg'
+      validator: (v) => ["", "sm", "lg"].includes(v),
     },
     border: {
       type: String,
-      default: 'border-bottom', // or '' to disable border, or other bootstrap border classes like 'border-top'
+      default: "border-bottom", // or '' to disable border, or other bootstrap border classes like 'border-top'
     },
     color: {
       type: String,
-      default: 'primary', // bootstrap color like 'primary', 'success', 'danger', etc.
+      default: "primary", // bootstrap color like 'primary', 'success', 'danger', etc.
     },
   },
   data() {
     return {
       activeIndex: this.initialActiveIndex,
-    }
+    };
   },
   computed: {
     sizeClass() {
-      if (this.size === 'sm') return 'nav-tabs-sm'
-      if (this.size === 'lg') return 'nav-tabs-lg'
-      return ''
+      if (this.size === "sm") return "nav-tabs-sm";
+      if (this.size === "lg") return "nav-tabs-lg";
+      return "";
     },
     borderClass() {
-      return this.border ? this.border : ''
+      return this.border ? this.border : "";
     },
     colorClass() {
-      return this.color ? `border-${this.color}` : ''
+      return this.color ? `border-${this.color}` : "";
     },
   },
   methods: {
     selectTab(index) {
-      if (this.tabs[index].disabled) return
-      this.activeIndex = index
-      this.$emit('update:activeIndex', index)
-      this.$emit('tab-changed', this.tabs[index])
+      // TODO: check for testing...
+      if (this.tabs[index].disabled) return;
+      this.activeIndex = index;
+      this.$emit("update:activeIndex", index);
+      this.$emit("tab-changed", this.tabs[index]);
     },
   },
-}
+};
 </script>
 
 <style scoped>
